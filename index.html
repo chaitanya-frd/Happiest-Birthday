@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Swara 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fef4f0 0%, #fae8e8 100%);
+            color: #5a4a42;
+            overflow-x: hidden;
+        }
+
+        /* Paper texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /%3E%3CfeColorMatrix type="saturate" values="0"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E');
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        section {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: #d4a5a5;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .hero-illustration {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            opacity: 0;
+            animation: floatIn 1.5s ease 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #8b7a73;
+            font-weight: 300;
+        }
+
+        /* Message Section */
+        .message {
+            background: #fff9f5;
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 40px rgba(212, 165, 165, 0.15);
+            animation: fadeInUp 1s ease;
+        }
+
+        .message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #d4a5a5;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .message p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #6b5a52;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        /* Memories Section */
+        .memories h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #d4a5a5;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px;
+            padding-bottom: 60px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            transform: rotate(0deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .polaroid:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(212, 165, 165, 0.3);
+            z-index: 10;
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f5e6e8, #d4a5a5);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.1rem;
+            color: #8b7a73;
+        }
+
+        /* Reasons Section */
+        .reasons h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #d4a5a5;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .sticky-notes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .sticky-note {
+            background: linear-gradient(135deg, #fff9f5, #fef4f0);
+            padding: 30px 25px;
+            border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(212, 165, 165, 0.15);
+            transform: rotate(0deg);
+            transition: all 0.3s ease;
+            border-top: 30px solid rgba(212, 165, 165, 0.3);
+            position: relative;
+        }
+
+        .sticky-note::before {
+            content: '\f08d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: #d4a5a5;
+        }
+
+        .sticky-note:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .sticky-note:nth-child(odd) {
+            transform: rotate(-1deg);
+        }
+
+        .sticky-note:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 0 10px 35px rgba(212, 165, 165, 0.25);
+        }
+
+        .sticky-note p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #6b5a52;
+            text-align: center;
+        }
+
+        /* Wish Section */
+        .wish {
+            background: white;
+            border-radius: 30px;
+            padding: 60px 50px;
+            box-shadow: 0 10px 40px rgba(212, 165, 165, 0.15);
+            border-left: 8px solid #d4a5a5;
+            position: relative;
+        }
+
+        .wish::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #f0d8d8 0px,
+                #f0d8d8 20px,
+                transparent 20px,
+                transparent 40px
+            );
+        }
+
+        .wish h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #d4a5a5;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .wish p {
+            font-size: 1.2rem;
+            line-height: 2.2;
+            color: #6b5a52;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Ending Section */
+        .ending {
+            text-align: center;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d4a5a5;
+            margin-bottom: 20px;
+        }
+
+        .doodle {
+            font-size: 2rem;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        /* Music Toggle */
+        .music-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(212, 165, 165, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(212, 165, 165, 0.4);
+        }
+
+        .music-toggle::before {
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            content: '\f001';
+            font-size: 1.5rem;
+            color: #d4a5a5;
+        }
+
+        .music-toggle.playing::before {
+            content: '\f028';
+            animation: musicPulse 1s infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes musicPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* Scroll Animation */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 20px;
+            }
+
+            .message, .wish {
+                padding: 40px 25px;
+            }
+
+            .photo-gallery {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .sticky-notes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Happy Birthday Swara! <i class="fas fa-birthday-cake"></i></h1>
+            <div class="hero-illustration">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="80" r="40" stroke="#d4a5a5" stroke-width="2" fill="#fef4f0"/>
+                    <path d="M60 110 Q100 140 140 110" stroke="#d4a5a5" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="85" cy="75" r="3" fill="#d4a5a5"/>
+                    <circle cx="115" cy="75" r="3" fill="#d4a5a5"/>
+                    <path d="M85 85 Q90 88 95 85" stroke="#d4a5a5" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M105 85 Q110 88 115 85" stroke="#d4a5a5" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="160" cy="60" r="15" fill="#f5e6e8" opacity="0.6"/>
+                    <circle cx="40" cy="50" r="12" fill="#f5e6e8" opacity="0.6"/>
+                    <circle cx="180" cy="100" r="10" fill="#f5e6e8" opacity="0.6"/>
+                    <path d="M100 40 L105 25 L95 25 Z" fill="#d4a5a5"/>
+                </svg>
+            </div>
+            <p>Today is all about celebrating you! <i class="fas fa-sparkles"></i></p>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section>
+        <div class="container">
+            <div class="message scroll-fade">
+                <h2>A Little Note for You...</h2>
+                <p>
+                    Dear Swara, on this special day, I want you to know how incredibly blessed I am to have you in my life. 
+                    You're not just a friend; but my everything.. 
+                    You are kindness, strength, and beautiful soul. 
+                    Thank you for being exactly who you are. Here's to another year of amazing memories together! <i class="fas fa-heart"></i>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section class="memories">
+        <div class="container">
+            <h2>Our Beautiful Memories <i class="fas fa-camera-retro"></i></h2>
+            <div class="photo-gallery">
+                <div class="polaroid scroll-fade">
+                    <div class="polaroid-img">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <i class="fas fa-spinner" style="font-size: 2.5rem;"></i>
+                            <span style="font-size: 1.2rem; font-weight: 600;">Loading..</span>
+                            <i class="fas fa-face-sad-tear" style="font-size: 1.8rem;"></i>
+                        </div>
+                    </div>
+                    <p class="polaroid-caption">That perfect spring day</p>
+                </div>
+                <div class="polaroid scroll-fade">
+                    <div class="polaroid-img">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <i class="fas fa-hourglass-half" style="font-size: 2.5rem;"></i>
+                            <span style="font-size: 1.2rem; font-weight: 600;">Not Yet..</span>
+                            <i class="fas fa-face-sad-cry" style="font-size: 1.8rem;"></i>
+                        </div>
+                    </div>
+                    <p class="polaroid-caption">Coffee & endless talks</p>
+                </div>
+                <div class="polaroid scroll-fade">
+                    <div class="polaroid-img">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <i class="fas fa-clock" style="font-size: 2.5rem;"></i>
+                            <span style="font-size: 1.2rem; font-weight: 600;">When..?</span>
+                        </div>
+                    </div>
+                    <p class="polaroid-caption">Celebrating together</p>
+                </div>
+                <div class="polaroid scroll-fade">
+                    <div class="polaroid-img">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <i class="fas fa-triangle-exclamation" style="font-size: 2.5rem;"></i>
+                            <span style="font-size: 1.2rem; font-weight: 600;">404 Error..</span>
+                            <i class="fas fa-face-grin-beam-sweat" style="font-size: 1.8rem;"></i>
+                        </div>
+                    </div>
+                    <p class="polaroid-caption">Sunset adventures</p>
+                </div>
+                <div class="polaroid scroll-fade">
+                    <div class="polaroid-img"><i class="fas fa-face-laugh-beam"></i></div>
+                    <p class="polaroid-caption">Being silly together</p>
+                </div>
+                <div class="polaroid scroll-fade">
+                    <div class="polaroid-img"><i class="fas fa-star"></i></div>
+                    <p class="polaroid-caption">Making memories</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reasons Section -->
+    <section class="reasons">
+        <div class="container">
+            <h2>Why You're So Special <i class="fas fa-heart-circle-check"></i></h2>
+            <div class="sticky-notes">
+                <div class="sticky-note scroll-fade">
+                    <p>Your smile lights up every room you enter</p>
+                </div>
+                <div class="sticky-note scroll-fade">
+                    <p>You’re special because our bond feels effortless, real, and irreplaceable.</p>
+                </div>
+                <div class="sticky-note scroll-fade">
+                    <p>You’re special because being with you feels honest, natural, and real.</p>
+                </div>
+                <div class="sticky-note scroll-fade">
+                    <p>You make ordinary moments extraordinary</p>
+                </div>
+                <div class="sticky-note scroll-fade">
+                    <p>Your laughter is contagious</p>
+                </div>
+                <div class="sticky-note scroll-fade">
+                    <p>You’re special because you’re the calm I look for and the comfort I trust.</p>
+                </div>
+                <div class="sticky-note scroll-fade">
+                    <p>You're loyal, kind, and genuine</p>
+                </div>
+                <div class="sticky-note scroll-fade">
+                    <p>You make me care in ways I can’t always explain, but always feel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wish Section -->
+    <section>
+        <div class="container">
+            <div class="wish scroll-fade">
+                <h2>My Birthday Wish for You <i class="fas fa-cake-candles"></i></h2>
+                <p>
+                    May this year bring you endless joy, incredible adventures, and all the love your heart can hold.
+                    May you chase your dreams fearlessly and find success in everything you do.
+                    May you always be surrounded by people who cherish you as much as I do.
+                    And may every day be filled with reasons to smile, laugh, and dance.
+                    You deserve the world and so much more. Happy birthday, my dearest friend! <i class="fas fa-balloon"></i>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ending Section -->
+    <section class="ending">
+        <div class="container scroll-fade">
+            <div class="signature">With all my love,<br>Your Forever</div>
+            <div class="doodle">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-sparkles"></i>
+                <i class="fas fa-flower"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="musicToggle"></button>
+
+    <!-- Hidden Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Music toggle
+        const musicToggle = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.classList.remove('playing');
+            } else {
+                bgMusic.play().catch(e => console.log('Audio play failed:', e));
+                musicToggle.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Polaroid tilt effect enhancement
+        document.querySelectorAll('.polaroid').forEach(polaroid => {
+            polaroid.addEventListener('mousemove', (e) => {
+                const rect = polaroid.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                polaroid.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.05)`;
+            });
+
+            polaroid.addEventListener('mouseleave', () => {
+                if (polaroid.classList.contains('polaroid:nth-child(even)')) {
+                    polaroid.style.transform = 'rotate(2deg)';
+                } else {
+                    polaroid.style.transform = 'rotate(-2deg)';
+                }
+            });
+        });
+
+        // Confetti effect on page load
+        function createConfetti() {
+            const colors = ['#d4a5a5', '#f5e6e8', '#fef4f0', '#e8c4d8'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    confetti.style.top = '-10px';
+                    confetti.style.opacity = '0.7';
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.zIndex = '9999';
+                    document.body.appendChild(confetti);
+
+                    let pos = -10;
+                    const speed = 2 + Math.random() * 3;
+                    const drift = (Math.random() - 0.5) * 2;
+
+                    const fall = setInterval(() => {
+                        pos += speed;
+                        confetti.style.top = pos + 'px';
+                        confetti.style.left = parseFloat(confetti.style.left) + drift + 'px';
+
+                        if (pos > window.innerHeight) {
+                            clearInterval(fall);
+                            confetti.remove();
+                        }
+                    }, 20);
+                }, i * 100);
+            }
+        }
+
+        // Trigger confetti on load
+        window.addEventListener('load', () => {
+            setTimeout(createConfetti, 500);
+        });
+    </script>
+</body>
+</html>
